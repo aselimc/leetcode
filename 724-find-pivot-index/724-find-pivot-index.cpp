@@ -5,8 +5,8 @@ public:
         int *middle =left;
         int *right = &nums[nums.size() - 1];
 
-        long left_sum = accumulate(left, middle, 0);
-        long right_sum = accumulate(middle + 1, right + 1, 0);
+        int left_sum = accumulate(left, middle, 0);
+        int right_sum = accumulate(middle + 1, right + 1, 0);
 
         while (middle != right)
         {
