@@ -9,12 +9,8 @@
 class Solution {
 public:
 ListNode *detectCycle(ListNode *head) {
-        vector<ListNode*> v;
         while(head){
-            v.push_back(head);
-            auto itr = find(v.begin(), v.end()-1, head);
-            if (itr != v.end()-1)
-                return *itr;
+            if (head->next - head <= 0) return head->next;
             head = head->next;
         }
         return NULL;
