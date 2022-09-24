@@ -2,7 +2,7 @@ class Solution {
 public:
     int longestPalindrome(string s) {
         int n = 0;
-        vector<int> count(128, 0);
+        vector<int> count(123, 0);
         for (char c : s){
             if (count[c-'A']==0){
                 count[c-'A']++;
