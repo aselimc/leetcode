@@ -4,7 +4,7 @@ public:
         int n = 0;
         vector<int> count(123, 0);
         for (char c : s){
-            if (count[c-'A']==0){
+            if (!count[c-'A']){
                 count[c-'A']++;
             }
             else{
