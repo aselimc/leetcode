@@ -1,33 +1,16 @@
 class Solution:
     def floodFill(self, image: List[List[int]], sr: int, sc: int, color: int) -> List[List[int]]:
-        queue = [(sr, sc)]
-        old_color = image[sr][sc]
-        image[sr][sc] = color
-        visited = [(sr, sc)]
-        while queue:
-            sr, sc = queue.pop(0)
-            if sr-1 >= 0:
-                if image[sr-1][sc] == old_color:
-                    image[sr-1][sc] = color
-                    if (sr-1, sc) not in visited:
-                        queue.append((sr-1, sc))
-                        visited.append((sr-1, sc))
-            if sr+1 <= len(image)-1:
-                if image[sr+1][sc] == old_color:
-                    image[sr+1][sc] = color
-                    if (sr+1, sc) not in visited:
-                        queue.append((sr+1, sc))
-                        visited.append((sr+1, sc))
-            if sc-1 >= 0:
-                if image[sr][sc-1] == old_color:
-                    image[sr][sc-1] = color
-                    if (sr, sc-1) not in visited:
-                        queue.append((sr, sc-1))
-                        visited.append((sr, sc-1))
-            if sc+1 <= len(image[0])-1:
-                if image[sr][sc+1] == old_color:
-                    image[sr][sc+1] = color
-                    if (sr, sc+1) not in visited:
-                        queue.append((sr, sc+1))
-                        visited.append((sr, sc+1))
+        R, C = len(image), len(image[0])
+        old = image[sr][sc]
+        if old == color: return image
+        def dfs(r, c):
+            if image[r][c] == old:
+                image[r][c] = color
+                if r >= 1: dfs(r-1, c)
+                if r+1 < R: dfs(r+1, c)
+                if c >= 1: dfs(r, c-1)
+                if c+1 < C: dfs(r, c+1)
+        dfs(sr, sc)
         return image
+        
+
