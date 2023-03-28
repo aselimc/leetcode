@@ -5,6 +5,7 @@ class Solution:
         old_color = image[sr][sc]
         image[sr][sc] = color
         visited = [(sr, sc)]
+        R, C = len(image), len(image[0])
         while queue:
             sr, sc = queue.pop(0)
             if sr-1 >= 0:
@@ -13,7 +14,7 @@ class Solution:
                     if (sr-1, sc) not in visited:
                         queue.append((sr-1, sc))
                         visited.append((sr-1, sc))
-            if sr+1 <= len(image)-1:
+            if sr+1 < R:
                 if image[sr+1][sc] == old_color:
                     image[sr+1][sc] = color
                     if (sr+1, sc) not in visited:
@@ -25,7 +26,7 @@ class Solution:
                     if (sr, sc-1) not in visited:
                         queue.append((sr, sc-1))
                         visited.append((sr, sc-1))
-            if sc+1 <= len(image[0])-1:
+            if sc+1 < C:
                 if image[sr][sc+1] == old_color:
                     image[sr][sc+1] = color
                     if (sr, sc+1) not in visited:
