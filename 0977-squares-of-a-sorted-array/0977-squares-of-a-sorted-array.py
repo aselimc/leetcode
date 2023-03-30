@@ -6,9 +6,9 @@ class Solution:
             h = nums[high] ** 2
             l = nums[low] ** 2
             if l < h:
-                answer.insert(0, h)
+                answer.append(h)
                 high -= 1
             else:
-                answer.insert(0, l)
+                answer.append(l)
                 low +=1
-        return answer
+        return list(reversed(answer))
