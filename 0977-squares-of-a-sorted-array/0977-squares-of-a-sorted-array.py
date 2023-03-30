@@ -3,10 +3,12 @@ class Solution:
         low, high = 0, len(nums)-1
         answer = []
         while low<=high:
-            if abs(nums[low]) < abs(nums[high]):
-                answer.insert(0, nums[high]**2)
+            h = nums[high] ** 2
+            l = nums[low] ** 2
+            if l < h:
+                answer.insert(0, h)
                 high -= 1
             else:
-                answer.insert(0, nums[low]**2)
+                answer.insert(0, l)
                 low +=1
         return answer
